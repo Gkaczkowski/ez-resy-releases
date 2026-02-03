@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ez-resy - Automated Resy Reservation Manager</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    .version {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .downloads {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .download-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .download-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .platform-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .platform-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .platform-arch {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #e63946 0%, #d62839 100%);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: linear-gradient(135deg, #ff4d5a 0%, #e63946 100%);
+      box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+    }
+
+    .download-btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 10px;
+      font-size: 0.85rem;
+      padding: 8px 20px;
+    }
+
+    .download-btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: none;
+    }
+
+    .features {
+      margin-bottom: 60px;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .feature p {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .instructions {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .instructions h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .instructions h3 {
+      font-size: 1.1rem;
+      margin: 20px 0 10px;
+      color: #ccc;
+    }
+
+    .instructions ol, .instructions ul {
+      margin-left: 20px;
+      color: #999;
+      line-height: 1.8;
+    }
+
+    .instructions code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #555;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .downloads {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="icon.png" alt="ez-resy logo" class="logo">
+      <h1>ez-resy</h1>
+      <p class="tagline">Automated Resy Reservation Manager</p>
+      <span class="version">v2.0.1</span>
+    </header>
+
+    <section class="downloads">
+      <div class="download-card">
+        <div class="platform-icon">&#63743;</div>
+        <div class="platform-name">macOS</div>
+        <div class="platform-arch">Apple Silicon (M1/M2/M3)</div>
+        <a href="https://github.com/Gkaczkowski/ez-resy-releases/releases/latest/download/ez-resy-2.0.1-arm64.dmg" class="download-btn">Download .dmg</a>
+      </div>
+
+      <div class="download-card">
+        <div class="platform-icon">&#63743;</div>
+        <div class="platform-name">macOS</div>
+        <div class="platform-arch">Intel</div>
+        <a href="https://github.com/Gkaczkowski/ez-resy-releases/releases/latest/download/ez-resy-2.0.1.dmg" class="download-btn">Download .dmg</a>
+      </div>
+
+      <div class="download-card">
+        <div class="platform-icon">&#8862;</div>
+        <div class="platform-name">Windows</div>
+        <div class="platform-arch">64-bit</div>
+        <a href="https://github.com/Gkaczkowski/ez-resy-releases/releases/latest/download/ez-resy-Setup-2.0.1.exe" class="download-btn">Download .exe</a>
+      </div>
+
+      <div class="download-card">
+        <div class="platform-icon">&#128039;</div>
+        <div class="platform-name">Linux</div>
+        <div class="platform-arch">64-bit</div>
+        <a href="https://github.com/Gkaczkowski/ez-resy-releases/releases/latest/download/ez-resy-2.0.1.AppImage" class="download-btn">Download .AppImage</a>
+        <a href="https://github.com/Gkaczkowski/ez-resy-releases/releases/latest/download/ez-resy_2.0.1_amd64.deb" class="download-btn secondary">Download .deb</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">&#128197;</div>
+          <h3>Auto-Scheduling</h3>
+          <p>Automatically scans for reservations on your preferred dates and times</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">&#127860;</div>
+          <h3>Multi-Restaurant</h3>
+          <p>Track multiple restaurants with priority ordering</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">&#128276;</div>
+          <h3>Notifications</h3>
+          <p>Get email alerts when reservations are booked</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">&#9881;</div>
+          <h3>Customizable</h3>
+          <p>Set time windows, party size, and scan intervals</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="instructions">
+      <h2>Installation</h2>
+
+      <h3>macOS</h3>
+      <ol>
+        <li>Download the .dmg file for your Mac (Apple Silicon or Intel)</li>
+        <li>Open the .dmg and drag ez-resy to Applications</li>
+        <li>Right-click the app and select "Open" the first time (to bypass Gatekeeper)</li>
+      </ol>
+
+      <h3>Windows</h3>
+      <ol>
+        <li>Download the .exe installer</li>
+        <li>Run the installer and follow the prompts</li>
+        <li>If SmartScreen warns you, click "More info" then "Run anyway"</li>
+      </ol>
+
+      <h3>Linux</h3>
+      <ol>
+        <li>Download the AppImage or .deb file</li>
+        <li>For AppImage: <code>chmod +x ez-resy-*.AppImage && ./ez-resy-*.AppImage</code></li>
+        <li>For .deb: <code>sudo dpkg -i ez-resy_*.deb</code></li>
+      </ol>
+    </section>
+
+    <section class="instructions">
+      <h2>Setup</h2>
+      <ol>
+        <li>Open the app and go to <strong>Settings</strong></li>
+        <li>Click <strong>Connect to Resy</strong> and log in with your Resy account</li>
+        <li>Add restaurants you want to monitor from the <strong>Search</strong> page</li>
+        <li>Configure your preferred time windows and party size</li>
+        <li>Enable the scheduler and let ez-resy do the work!</li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>Made for Resy enthusiasts</p>
+    </footer>
+  </div>
+</body>
+</html>
