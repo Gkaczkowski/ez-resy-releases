@@ -306,6 +306,10 @@
         <li><strong>Right-click</strong> the app and select <strong>"Open"</strong> (not double-click)</li>
         <li>Click "Open" in the dialog that appears to bypass Gatekeeper</li>
       </ol>
+      <p style="margin-top: 15px; padding: 12px; background: rgba(230, 57, 70, 0.2); border-radius: 8px; font-size: 0.9rem;">
+        <strong>Why is this needed?</strong> This app isn't code-signed with an Apple Developer certificate.
+        macOS Gatekeeper quarantines unsigned apps downloaded from the internet.
+      </p>
       <p style="margin-top: 15px; padding: 12px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; font-size: 0.9rem;">
         <strong>Still seeing "app is damaged" error?</strong> Open Terminal and run:<br>
         <code style="display: block; margin-top: 8px;">xattr -c /Applications/ez-resy.app</code>
