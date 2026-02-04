@@ -303,8 +303,17 @@
       <ol>
         <li>Download the .dmg file for your Mac (Apple Silicon or Intel)</li>
         <li>Open the .dmg and drag ez-resy to Applications</li>
+        <li><strong>Important:</strong> Before opening, run this command in Terminal to remove the quarantine flag:<br>
+          <code>xattr -c ~/Downloads/ez-resy-*.dmg</code></li>
+        <li>If you see "app is damaged" error, run:<br>
+          <code>xattr -c /Applications/ez-resy.app</code></li>
         <li>Right-click the app and select "Open" the first time (to bypass Gatekeeper)</li>
       </ol>
+      <p style="margin-top: 15px; padding: 12px; background: rgba(230, 57, 70, 0.2); border-radius: 8px; font-size: 0.9rem;">
+        <strong>Why is this needed?</strong> This app isn't code-signed with an Apple Developer certificate.
+        macOS Gatekeeper quarantines unsigned apps downloaded from the internet. The <code>xattr -c</code> command
+        removes this quarantine flag so the app can run normally.
+      </p>
 
       <h3>Windows</h3>
       <ol>
